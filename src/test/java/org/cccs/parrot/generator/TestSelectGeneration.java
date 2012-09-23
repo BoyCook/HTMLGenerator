@@ -15,7 +15,7 @@ public class TestSelectGeneration {
 
     @Test
     public void generateSelectShouldWork() {
-        Select select = new Select("1");
+        Select select = new Select();
         select.append(new Option());
         String expected = "<select id=\"1\"><option></option></select>";
         assertThat(select.toString(), is(equalTo(expected)));
