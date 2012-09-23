@@ -14,50 +14,15 @@ import static org.junit.Assert.assertThat;
 public class TestGeneration {
 
     @Test
+    public void getDomElementNameShouldWork() {
+        Div div = new Div("Div Content");
+        assertThat(div.getName(), is(equalTo("Div")));
+    }
+
+    @Test
     public void generateDivShouldWork() {
         Div div = new Div("Div Content");
         assertThat(div.toString(), is(equalTo("<div>Div Content</div>")));
-    }
-
-    @Test
-    public void generateTableShouldWork() {
-        Table table = new Table();
-        Tr tr = new Tr();
-        table.append(tr);
-        tr.append(new Th("ID")).append(new Td("123"));
-
-        assertThat(table.toString(), is(equalTo("<table><tr><th>ID</th><td>123</td></tr></table>")));
-    }
-
-    @Test
-    public void generateListShouldWork() {
-        Ul list = new Ul();
-        Li item1 = new Li();
-        item1.append(new A("FooBar", "#foo"));
-        list.append(item1);
-
-        Li item2 = new Li();
-        item2.append(new A("BarFoo", "#bar"));
-        list.append(item2);
-
-        String expected = "<ul><li><a href=\"#foo\">FooBar</a></li><li><a href=\"#bar\">BarFoo</a></li></ul>";
-
-        assertThat(list.toString(), is(equalTo(expected)));
-    }
-
-    @Test
-    public void generateTextShouldWork() {
-        Text text = new Text("1");
-        String expected = "<input type=\"text\" id=\"1\"/>";
-        assertThat(text.toString(), is(equalTo(expected)));
-    }
-
-    @Test
-    public void generateSelectShouldWork() {
-        Select select = new Select("1");
-        select.append(new Option("Value 1", "value1"));
-        String expected = "<select id=\"1\"><option value=\"value1\">Value 1</option></select>";
-        assertThat(select.toString(), is(equalTo(expected)));
     }
 
     @Test

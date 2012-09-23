@@ -12,10 +12,6 @@ public abstract class Input extends DOMElement {
     private final String type;
     private String inputValue;
 
-    public Input(String type) {
-        this(type, null);
-    }
-
     public Input(String type, String inputValue) {
         super("Input", "input");
         this.type = type;
